@@ -30,17 +30,17 @@ exports.addIncome = async (req, res) => {
         error:
           "all fields are required. eg, title, amount, category, description, date",
       });
-      if (typeof amount !== "Number" && amount <= 0) {
-        res.status(400).json({
-          error:
-            "amount needs to be greater than 0, amount needs to be a positive number",
-        });
-      }
-      await income.save();
-      res.status(200).json({
-        message: "Income successfully added!",
+    }
+    if (typeof amount !== "Number" && amount <= 0) {
+      res.status(400).json({
+        error:
+          "amount needs to be greater than 0, amount needs to be a positive number",
       });
     }
+    await income.save();
+    res.status(200).json({
+      message: "Income successfully added!",
+    });
   } catch (error) {
     res.status(500).json({
       message: "Server error, check values, check database connection",
@@ -64,6 +64,7 @@ exports.getIncome = async (req, res) => {
 
 exports.deleteIncome = async (req, res) => {
   const { id } = req.params;
+  console.log(req.params);
   IncomeSchema.findByIdAndDelete(id)
     .then((income) => {
       res.status(200).json({ message: "Income deleted" });
