@@ -11,5 +11,5 @@ router.post("/add-income", addIncome);
 //endpoint to retrieve incomes in database
 router.get("/get-income", getIncome);
 //endpoint to delete income by id
-router.delete("/delete-income", deleteIncome);
+router.delete("/delete-income/:id", deleteIncome);
 module.exports = { router };
