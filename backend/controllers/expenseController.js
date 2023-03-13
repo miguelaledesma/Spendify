@@ -28,7 +28,7 @@ exports.addExpense = async (req, res) => {
     }
     await expense.save();
     res.status(200).json({
-      message: "Income successfully added!",
+      message: "Expense successfully added!",
     });
   } catch (error) {
     res.status(500).json({
