@@ -44,6 +44,7 @@ exports.addIncome = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       message: "Server error, check values, check database connection",
+      error: error.message,
     });
   }
   console.log(income);
@@ -58,6 +59,7 @@ exports.getIncome = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       message: "Error retrieving all incomes in DB. Check Server.",
+      error: error.message,
     });
   }
 };
@@ -72,6 +74,7 @@ exports.deleteIncome = async (req, res) => {
     .catch((error) => {
       res.status(500).json({
         message: "Income has already been deleted, please check server",
+        error: error.message,
       });
     });
 };

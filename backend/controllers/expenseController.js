@@ -2,7 +2,7 @@ const ExpenseSchema = require("../models/ExpenseModel");
 
 exports.addExpense = async (req, res) => {
   const { title, amount, category, description, date } = req.body;
-  //create a new instance of the incomeSchema, pass in the properties from the request body
+  //create a new instance of the ExpenseSchema, pass in the properties from the request body
 
   const expense = ExpenseSchema({
     title,
@@ -13,7 +13,7 @@ exports.addExpense = async (req, res) => {
   });
   //sending to database using try/catch (need validations first)
   try {
-    //validations, need all fields to be filled out.
+    //validations, need all fields to be filled out, amount needs to be greater than 0 to be a valid entry.
     if (!title || !amount || !category || !description || !date) {
       res.status(400).json({
         error:
