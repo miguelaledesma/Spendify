@@ -10,6 +10,7 @@ const {
   getUserById,
   deleteUserById,
   userSignUp,
+  userLogin,
 } = require("../controllers/UserController");
 
 const router = require("express").Router();
@@ -29,4 +30,5 @@ router.post("/sign-up", userSignUp);
 router.get("/users", getAllUsers);
 router.get("/user/:id", getUserById);
 router.delete("user/:id", deleteUserById);
+router.post("/login", userLogin);
 module.exports = { router };

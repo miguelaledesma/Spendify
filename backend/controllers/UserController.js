@@ -1,14 +1,9 @@
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 const UserSchema = require("../models/UserModel");
-//to-do, add bycrypt to hash password for extended security
+
 exports.userSignUp = async (req, res) => {
   const { name, email, password } = req.body;
-
-  const user = UserSchema({
-    name,
-    email,
-    password,
-  });
 
   try {
     const existingUser = await UserSchema.findOne({ email });
@@ -22,6 +17,13 @@ exports.userSignUp = async (req, res) => {
       });
       return;
     }
+    //hashed Password for added security
+    const hashedPassword = await bcrypt.hash(password, 8);
+    const user = UserSchema({
+      name,
+      email,
+      password: hashedPassword,
+    });
 
     await user.save();
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
@@ -91,5 +93,36 @@ exports.deleteUserById = async (req, res) => {
     });
   }
 };
-//to-do
-exports.userLogin = async (req, res) => {};
+
+exports.userLogin = async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const user = await UserSchema.findOne({ email });
+    if (!user) {
+      res.status(404).json({
+        message: "Invalid Email",
+      });
+      return;
+    }
+    const matchPassword = await bcrypt.compare(password, user.password);
+    if (!matchPassword) {
+      res.status(400).json({
+        message: "Invalid Password",
+      });
+      return;
+    }
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
+
+    res.status(200).json({
+      message: "Login Successful",
+      user,
+      token,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "server error",
+      error: error.message,
+    });
+  }
+};

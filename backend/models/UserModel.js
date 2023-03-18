@@ -20,7 +20,7 @@ const UserSchema = new mongoose.Schema(
       type: String,
       require: true,
       trim: true,
-      maxLength: 20,
+      minLength: 6,
     },
   },
   { timestamps: true }
