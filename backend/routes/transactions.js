@@ -5,6 +5,12 @@ const {
 } = require("../controllers/incomeController");
 
 const { addExpense } = require("../controllers/expenseController");
+const {
+  getAllUsers,
+  getUserById,
+  deleteUserById,
+  userSignUp,
+} = require("../controllers/UserController");
 
 const router = require("express").Router();
 
@@ -17,4 +23,10 @@ router.delete("/delete-income/:id", deleteIncome);
 
 //endpoint to add expense
 router.post("/add-expense", addExpense);
+
+//enpoint for creating new user, getting all users, getting user by id
+router.post("/sign-up", userSignUp);
+router.get("/users", getAllUsers);
+router.get("/user/:id", getUserById);
+router.delete("user/:id", deleteUserById);
 module.exports = { router };
