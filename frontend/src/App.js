@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Homepage from "./components/Homepage";
 import SignUpForm from "./components/Sign-Up-Form";
 import DashboardMain from "./components/DashboardMain";
+import LoginForm from "./components/LoginForm";
 
 function App() {
   const [isDarkMode, setDarkMode] = useState("light");
@@ -30,6 +31,7 @@ function App() {
         element={<Homepage isDarkMode={isDarkMode} setDarkMode={setDarkMode} />}
       />
       <Route path="/signup" element={<SignUpForm />} />
+      <Route path="/login" element={<LoginForm />} />
       <Route exact path="/dashboard" element={<DashboardMain />} />
     </Routes>
   );
