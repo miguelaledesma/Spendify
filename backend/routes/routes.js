@@ -3,7 +3,7 @@ const {
   getIncome,
   deleteIncome,
 } = require("../controllers/incomeController");
-
+const auth = require("../middleware/authentication");
 const { addExpense } = require("../controllers/expenseController");
 const {
   getAllUsers,
@@ -16,7 +16,7 @@ const {
 const router = require("express").Router();
 
 //post method to add income
-router.post("/add-income", addIncome);
+router.post("/add-income", auth, addIncome);
 //endpoint to retrieve incomes in database
 router.get("/get-income", getIncome);
 //endpoint to delete income by id

@@ -1,53 +1,36 @@
 const IncomeSchema = require("../models/IncomeModel");
 
 exports.addIncome = async (req, res) => {
-  const { title, amount, category, description, date } = req.body;
-  //create a new instance of the incomeSchema, pass in the properties from the request body
-  /**
-   * added income should return: 
-{
-  title: 'title',
-  amount: 1000,
-  type: 'income', this is default, no need to pass it in. 
-  date: 2023-03-09T05:00:00.000Z,
-  category: 'Hello this is edited',
-  description: 'String',
-  _id: new ObjectId("640ba0a4a6404c857626bb13")
-}
-   */
-  const income = IncomeSchema({
-    title,
-    amount,
-    category,
-    description,
-    date,
-  });
-  //sending to database using try/catch (need validations first)
   try {
-    //validations, need all fields to be filled out.
-    if (!title || !amount || !category || !description || !date) {
-      res.status(400).json({
-        error:
-          "all fields are required. eg, title, amount, category, description, date",
-      });
-    }
-    if (typeof amount !== "Number" && amount <= 0) {
-      res.status(400).json({
-        error:
-          "amount needs to be greater than 0, amount needs to be a positive number",
-      });
-    }
+    const { title, amount, type, date, category, description } = req.body;
+
+    // validate user ID in token matches request user ID
+    // if (req.user._id.toString() !== req.params.userId) {
+    //   return res.status(401).json({ error: "Unauthorized" });
+    // }
+
+    const income = new IncomeSchema({
+      userId: req.user._id,
+      title,
+      amount,
+      type,
+      date,
+      category,
+      description,
+    });
+
     await income.save();
+
     res.status(200).json({
-      message: "Income successfully added!",
+      message: "income created successfully",
+      income,
     });
   } catch (error) {
     res.status(500).json({
-      message: "Server error, check values, check database connection",
+      message: "server error",
       error: error.message,
     });
   }
-  console.log(income);
 };
 
 //add method to read from db
