@@ -4,11 +4,6 @@ exports.addIncome = async (req, res) => {
   try {
     const { title, amount, type, date, category, description } = req.body;
 
-    // validate user ID in token matches request user ID
-    // if (req.user._id.toString() !== req.params.userId) {
-    //   return res.status(401).json({ error: "Unauthorized" });
-    // }
-
     const income = new IncomeSchema({
       userId: req.user._id,
       title,
@@ -37,8 +32,11 @@ exports.addIncome = async (req, res) => {
 
 exports.getIncome = async (req, res) => {
   try {
-    const allIncomes = await IncomeSchema.find().sort({ createdAt: -1 });
-    res.status(200).json(allIncomes);
+    const userId = req.user._id;
+    const userIncome = await IncomeSchema.find({ userId }).sort({
+      createdAt: -1,
+    });
+    res.status(200).json(userIncome);
   } catch (error) {
     res.status(500).json({
       message: "Error retrieving all incomes in DB. Check Server.",
