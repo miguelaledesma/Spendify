@@ -1,8 +1,11 @@
+import React, { useState } from "react";
+import styled from "styled-components";
 import { useGlobalContext } from "../../context/globalContext";
+import { useNavigate } from "react-router-dom";
 import { signout } from "../../utils/icons";
 import { menuItems } from "../../utils/menu-items";
-import { useNavigate } from "react-router-dom";
-function Navigation() {
+
+function Navigation({ active, setActive }) {
   const { user } = useGlobalContext();
   const history = useNavigate();
   const handleLogout = () => {
@@ -10,37 +13,107 @@ function Navigation() {
     history("/login");
   };
   return (
-    <div>
-      <div
-        id="Nav"
-        class="p-8 md:p-4 lg:p-0 w-full md:w-auto max-w-md h-full bg-opacity-80 bg-white border-2 border-white backdrop-blur-lg rounded-lg flex flex-col justify-between"
-      >
-        <div id="userAvatar" class="h-100 flex items-center gap-4">
-          {/* <img/>  */}
-          <div id="userText">
-            <h2 class="text-black">{user?.email}</h2>
-            <p>The Money</p>
-          </div>
-        </div>
-        <ul id="menu-items" class="flex-1 flex flex-col">
-          {menuItems.map((item) => {
-            return (
-              <li
-                key={item.id}
-                class="grid grid-cols-2  my-3 font-medium cursor-pointer transition-all duration-400 ease-in-out text-blue-700 pl-4 relative"
-              >
-                <span>{item.icon}</span>
-                <span>{item.title}</span>
-              </li>
-            );
-          })}
-        </ul>
-        <div id="bottom-nav" onClick={handleLogout}>
-          {signout} Sign Out
+    <NavStyled>
+      <div className="user-con">
+        {/* <img src={} alt="" /> */}
+        <div className="text">
+          <h2>{user.email}</h2>
+          <p>{user.name} Tracker</p>
         </div>
       </div>
-    </div>
+      <ul className="menu-items">
+        {menuItems.map((item) => {
+          return (
+            <li
+              key={item.id}
+              onClick={() => setActive(item.id)}
+              className={active === item.id ? "active" : ""}
+            >
+              {item.icon}
+              <span>{item.title}</span>
+            </li>
+          );
+        })}
+      </ul>
+      <div className="bottom-nav">
+        <li>{signout} Sign Out</li>
+      </div>
+    </NavStyled>
   );
 }
+
+const NavStyled = styled.nav`
+  padding: 2rem 1.5rem;
+  width: 374px;
+  height: 100%;
+  background: rgba(252, 246, 249, 0.78);
+  border: 3px solid #ffffff;
+  backdrop-filter: blur(4.5px);
+  border-radius: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  .user-con {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #fcf6f9;
+      border: 2px solid #ffffff;
+      padding: 0.2rem;
+      box-shadow: 0px 1px 17px rgba(0, 0, 0, 0.06);
+    }
+    h2 {
+      color: rgba(34, 34, 96, 1);
+    }
+    p {
+      color: rgba(34, 34, 96, 0.6);
+    }
+  }
+  .menu-items {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    li {
+      display: grid;
+      grid-template-columns: 40px auto;
+      align-items: center;
+      margin: 0.6rem 0;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.4s ease-in-out;
+      color: rgba(34, 34, 96, 0.6);
+      padding-left: 1rem;
+      position: relative;
+      i {
+        color: rgba(34, 34, 96, 0.6);
+        font-size: 1.4rem;
+        transition: all 0.4s ease-in-out;
+      }
+    }
+  }
+  .active {
+    color: rgba(34, 34, 96, 1) !important;
+    i {
+      color: rgba(34, 34, 96, 1) !important;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: #222260;
+      border-radius: 0 10px 10px 0;
+    }
+  }
+`;
 
 export default Navigation;
