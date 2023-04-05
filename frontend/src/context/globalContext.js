@@ -11,25 +11,6 @@ export const GlobalProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [user, setUser] = useState(null);
 
-  //   const fetchCurrentUser = async (id) => {
-  //     try {
-  //       const response = await axios.get(`${BASE_URL}user:${id}`);
-  //       console.log(response.data.user);
-  //       setUser(response.data.user);
-  //     } catch (error) {
-  //       throw new Error(error.response.data.message);
-  //     }
-  //   };
-
-  //   useEffect(() => {
-  //     const token = localStorage.getItem("token");
-  //     if (token) {
-  //       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  //       fetchCurrentUser();
-  //     }
-  //   }, []);
-  //calculate incomes
-
   const loginUser = async (email, password) => {
     try {
       const response = await axios.post(`${BASE_URL}login`, {
@@ -39,6 +20,7 @@ export const GlobalProvider = ({ children }) => {
       const { user, token } = response.data;
       localStorage.setItem("token", token);
       console.log(response.data);
+      setUser(user); // Set the user state with the returned user object
       return user;
     } catch (error) {
       throw new Error(error.response.data.message);

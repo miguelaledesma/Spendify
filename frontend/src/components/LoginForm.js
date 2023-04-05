@@ -7,27 +7,26 @@ const BASE_URL = "http://localhost:5000/api/v1/";
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { user, setUser, setError, loginUser } = useGlobalContext();
+  const { setUser, setError, loginUser } = useGlobalContext();
   const history = useNavigate();
-  const fetchCurrentUser = async (id) => {
-    id = user._id;
-    try {
-      const response = await axios.get(`${BASE_URL}user/${id}`);
-      console.log(response.data);
-      setUser(response.data);
-    } catch (error) {
-      throw new Error(error.response.data.message);
-    }
-  };
+  // const fetchCurrentUser = async (id) => {
+  //   id = user._id;
+  //   try {
+  //     const response = await axios.get(`${BASE_URL}user/:${id}`);
+  //     console.log(response.data);
+  //     setUser(response.data);
+  //   } catch (error) {
+  //     throw new Error(error.response.data.message);
+  //   }
+  // };
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-
-    if (token) {
-      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      fetchCurrentUser();
-    }
-  }, []);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (token) {
+  //     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  //     fetchCurrentUser();
+  //   }
+  // }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
