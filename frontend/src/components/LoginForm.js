@@ -9,24 +9,6 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const { setUser, setError, loginUser } = useGlobalContext();
   const history = useNavigate();
-  // const fetchCurrentUser = async (id) => {
-  //   id = user._id;
-  //   try {
-  //     const response = await axios.get(`${BASE_URL}user/:${id}`);
-  //     console.log(response.data);
-  //     setUser(response.data);
-  //   } catch (error) {
-  //     throw new Error(error.response.data.message);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token");
-  //   if (token) {
-  //     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  //     fetchCurrentUser();
-  //   }
-  // }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

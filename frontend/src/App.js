@@ -32,7 +32,7 @@ function App() {
       />
       <Route path="/signup" element={<SignUpForm />} />
       <Route path="/login" element={<LoginForm />} />
-      <Route exact path="/dashboard" element={<DashboardMain />} />
+      <Route path="/dashboard" element={<DashboardMain />} />
     </Routes>
   );
 }

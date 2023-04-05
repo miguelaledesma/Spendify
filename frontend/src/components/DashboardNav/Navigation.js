@@ -1,44 +1,73 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useGlobalContext } from "../../context/globalContext";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import { signout } from "../../utils/icons";
 import { menuItems } from "../../utils/menu-items";
+import jwt_decode from "jwt-decode";
+
+const BASE_URL = "http://localhost:5000/api/v1/";
 
 function Navigation({ active, setActive }) {
-  const { user } = useGlobalContext();
   const history = useNavigate();
+  const { user, setUser } = useGlobalContext();
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     history("/login");
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decodedToken = jwt_decode(token);
+      axios
+        .get(`${BASE_URL}user/${decodedToken.userId}`)
+        .then((response) => {
+          setUser(response.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else {
+      history("/login");
+    }
+  }, [history, setUser]);
+
   return (
-    <NavStyled>
-      <div className="user-con">
-        {/* <img src={} alt="" /> */}
-        <div className="text">
-          <h2>{user.email}</h2>
-          <p>{user.name} Tracker</p>
-        </div>
-      </div>
-      <ul className="menu-items">
-        {menuItems.map((item) => {
-          return (
-            <li
-              key={item.id}
-              onClick={() => setActive(item.id)}
-              className={active === item.id ? "active" : ""}
-            >
-              {item.icon}
-              <span>{item.title}</span>
-            </li>
-          );
-        })}
-      </ul>
-      <div className="bottom-nav">
-        <li>{signout} Sign Out</li>
-      </div>
-    </NavStyled>
+    <>
+      {user ? (
+        <NavStyled>
+          <div className="user-con">
+            {/* <img src={} alt="" /> */}
+            <div className="text">
+              <h2>{user?.email}</h2>
+              <p>{user?.name} Tracker</p>
+            </div>
+          </div>
+          <ul className="menu-items">
+            {menuItems.map((item) => {
+              return (
+                <li
+                  key={item.id}
+                  onClick={() => setActive(item.id)}
+                  className={active === item.id ? "active" : ""}
+                >
+                  {item.icon}
+                  <span>{item.title}</span>
+                </li>
+              );
+            })}
+          </ul>
+          <div className="bottom-nav">
+            <li onClick={handleLogout}>{signout} Sign Out</li>
+          </div>
+        </NavStyled>
+      ) : (
+        <p>Error</p>
+      )}
+    </>
   );
 }
 

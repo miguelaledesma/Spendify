@@ -1,34 +1,37 @@
 import Navigation from "./DashboardNav/Navigation";
-import Income from "./DashboardNav/Income";
+import React, { useState, useEffect } from "react";
+
 import Expense from "./DashboardNav/Expenses";
-import { useState } from "react";
+import Income from "./DashboardNav/Income";
+import { useGlobalContext } from "../context/globalContext";
+// const BASE_URL = "http://localhost:5000/api/v1/";
+
 const DashboardMain = () => {
+  const { user } = useGlobalContext();
   const [active, setActive] = useState(1);
 
-  const displayData = () => {
+  const renderComponent = () => {
     switch (active) {
       case 1:
-        return <DashboardMain />;
       case 2:
-        return <DashboardMain />;
+        return;
       case 3:
-        return <Income />;
-      case 4:
         return <Expense />;
+      case 4:
+        return <Income />;
       default:
-        return <DashboardMain />;
+        return;
     }
   };
-
   return (
     <div className="DashMainApp" class="h-screen relative">
       <div className="mainAppLayout" class="p-8 h-full flex gap-8">
-        <Navigation active={active} setActive={setActive} />
+        <Navigation active={active} setActive={setActive} user={user} />
         <main
           class="flex-1 bg-rgba-252-246-249-78 border-3 border-white backdrop-blur-4.5 rounded-2xl overflow-x-hidden
 "
         >
-          {/* {displayData()} */}
+          {renderComponent()}
         </main>
       </div>
     </div>
