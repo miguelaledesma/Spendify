@@ -32,14 +32,18 @@ exports.addIncome = async (req, res) => {
 
 exports.getIncome = async (req, res) => {
   try {
-    const userId = req.user._id;
-    const userIncome = await IncomeSchema.find({ userId }).sort({
+    const user = req.user._id.toString();
+    console.log(user);
+    const userIncome = await IncomeSchema.find({
+      userId: user,
+    }).sort({
       createdAt: -1,
     });
+    console.log(userIncome);
     res.status(200).json(userIncome);
   } catch (error) {
     res.status(500).json({
-      message: "Error retrieving all incomes in DB. Check Server.",
+      message: "Error retrieving incomes for user. Check Server.",
       error: error.message,
     });
   }
