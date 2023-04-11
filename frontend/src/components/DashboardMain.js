@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Expense from "./DashboardNav/Expenses";
 import Income from "./DashboardNav/Income";
 import { useGlobalContext } from "../context/globalContext";
+import FinanceOverview from "./DashboardNav/FinancesOverview";
 // const BASE_URL = "http://localhost:5000/api/v1/";
 
 const DashboardMain = () => {
@@ -13,6 +14,7 @@ const DashboardMain = () => {
   const renderComponent = () => {
     switch (active) {
       case 1:
+        return <FinanceOverview />;
       case 2:
         return;
       case 3:
@@ -20,7 +22,7 @@ const DashboardMain = () => {
       case 4:
         return <Expense />;
       default:
-        return;
+        return <FinanceOverview />;
     }
   };
   return (
