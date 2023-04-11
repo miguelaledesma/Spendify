@@ -82,17 +82,34 @@ export const GlobalProvider = ({ children }) => {
   //calculate incomes
   const addExpense = async (income) => {
     const response = await axios
-      .post(`${BASE_URL}add-expense`, income)
+      .post(`${BASE_URL}add-expense`, income, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
       .catch((err) => {
         setError(err.response.data.message);
       });
+    console.log(response.data.message);
     getExpenses();
   };
 
   const getExpenses = async () => {
-    const response = await axios.get(`${BASE_URL}expenses`);
-    setExpenses(response.data);
-    console.log(response.data);
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No Token found in Local Storage");
+      }
+      const response = await axios.get(`${BASE_URL}get-expenses`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(response);
+      setExpenses(response.data);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   const totalExpenses = () => {
