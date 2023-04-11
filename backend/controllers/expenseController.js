@@ -18,13 +18,13 @@ exports.addExpense = async (req, res) => {
     res.status(200).json({
       message: "Expense successfully added!",
     });
+    console.log(expense);
   } catch (error) {
     res.status(500).json({
       message: "Server error, check values, check database connection",
       error: error.message,
     });
   }
-  console.log(expense);
 };
 
 exports.getExpenses = async (req, res) => {

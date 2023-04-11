@@ -1,12 +1,9 @@
 const { MongoMemoryServer } = require("mongodb-memory-server");
 const { MongoClient } = require("mongodb");
 const { db } = require("../db/database");
-
 /** 
 This test verifies that the db() function correctly establishes a connection to the MongoDB server and that the connection can be used to perform database operations without errors. 
-
 It also tests that the code for creating and initializing the MongoDB server mock works correctly.
-
 */
 
 describe("database connection", () => {
