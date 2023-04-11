@@ -43,7 +43,7 @@ function ExpenseForm() {
           type="text"
           value={title}
           name={"title"}
-          placeholder="Expense Title"
+          placeholder="Item"
           onChange={handleInput("title")}
         />
       </div>
@@ -52,8 +52,9 @@ function ExpenseForm() {
           value={amount}
           type="text"
           name={"amount"}
-          placeholder={"Expense Amount"}
+          placeholder={"$"}
           onChange={handleInput("amount")}
+          class="dark:placeholder-gray-500 "
         />
       </div>
       <div className="input-control">
@@ -92,7 +93,7 @@ function ExpenseForm() {
         <textarea
           name="description"
           value={description}
-          placeholder="Add A Reference"
+          placeholder="Description of expense"
           id="description"
           cols="30"
           rows="4"
@@ -106,7 +107,7 @@ function ExpenseForm() {
           bPad={".8rem 1.6rem"}
           bRad={"30px"}
           bg={"var(--color-accent"}
-          color={"#fff"}
+          color={"#00000"}
         />
       </div>
     </ExpenseFormStyled>
