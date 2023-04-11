@@ -109,9 +109,9 @@ function IncomeItem({
               bPad={"1rem"}
               bRad={"50%"}
               bg={"var(--primary-color"}
-              color={"#fff"}
-              iColor={"#fff"}
-              hColor={"var(--color-green)"}
+              color={"#00000"}
+              iColor={"#00000"}
+              hColor={"#42AD00"}
               onClick={() => deleteItem(id)}
             />
           </div>
@@ -164,7 +164,6 @@ const IncomeItemStyled = styled.div`
         width: 0.8rem;
         height: 0.8rem;
         border-radius: 50%;
-        background: ${(props) => props.indicator};
       }
     }
     .inner-content {
