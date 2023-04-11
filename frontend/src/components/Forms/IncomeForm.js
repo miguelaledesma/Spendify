@@ -44,7 +44,7 @@ const IncomeForm = () => {
           type="text"
           value={title}
           name={"title"}
-          placeholder="Salary Title"
+          placeholder="Source of Income"
           onChange={handleInput("title")}
         />
       </div>
@@ -53,7 +53,7 @@ const IncomeForm = () => {
           value={amount}
           type="text"
           name={"amount"}
-          placeholder={"Salary Amount"}
+          placeholder={"$"}
           onChange={handleInput("amount")}
         />
       </div>
@@ -80,12 +80,12 @@ const IncomeForm = () => {
             Select Option
           </option>
           <option value="salary">Salary</option>
-          <option value="freelancing">Freelancing</option>
-          <option value="investments">Investiments</option>
-          <option value="stocks">Stocks</option>
-          <option value="bitcoin">Bitcoin</option>
+          <option value="freelancing">Freelance</option>
+          <option value="investments">Investments</option>
+          <option value="stocks">Stock</option>
+          <option value="bitcoin">Crypto</option>
           <option value="bank">Bank Transfer</option>
-          <option value="youtube">Youtube</option>
+          <option value="youtube">Social Media</option>
           <option value="other">Other</option>
         </select>
       </div>
@@ -93,7 +93,7 @@ const IncomeForm = () => {
         <textarea
           name="description"
           value={description}
-          placeholder="Add A Reference"
+          placeholder="Description"
           id="description"
           cols="30"
           rows="4"
@@ -107,7 +107,7 @@ const IncomeForm = () => {
           bPad={".8rem 1.6rem"}
           bRad={"30px"}
           bg={"var(--color-accent"}
-          color={"#fff"}
+          color={"#00000"}
         />
       </div>
     </FormStyled>

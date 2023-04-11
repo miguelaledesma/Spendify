@@ -6,6 +6,7 @@ import axios from "axios";
 import { signout } from "../../utils/icons";
 import { menuItems } from "../../utils/menu-items";
 import jwt_decode from "jwt-decode";
+import { Loader } from "../../styles/Loader";
 
 const BASE_URL = "http://localhost:5000/api/v1/";
 
@@ -42,8 +43,8 @@ function Navigation({ active, setActive }) {
           <div className="user-con">
             {/* <img src={} alt="" /> */}
             <div className="text">
-              <h2>{user?.email}</h2>
-              <p>{user?.name} Tracker</p>
+              <h2>{user?.name} tracker</h2>
+              <p>{user?.email} </p>
             </div>
           </div>
           <ul className="menu-items">
@@ -65,7 +66,7 @@ function Navigation({ active, setActive }) {
           </div>
         </NavStyled>
       ) : (
-        <p>Error</p>
+        <Loader />
       )}
     </>
   );
