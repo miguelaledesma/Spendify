@@ -122,7 +122,9 @@ export const GlobalProvider = ({ children }) => {
   };
 
   const totalBalance = () => {
-    return totalIncome() - totalExpenses();
+    const totalForIncomes = totalIncome();
+    const totalForExpenses = totalExpenses();
+    return totalForIncomes.toFixed(2) - totalForExpenses.toFixed(2);
   };
 
   const transactionHistory = () => {
