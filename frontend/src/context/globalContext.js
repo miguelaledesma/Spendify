@@ -27,18 +27,42 @@ export const GlobalProvider = ({ children }) => {
     }
   };
   const addIncome = async (income) => {
-    const response = await axios
-      .post(`${BASE_URL}add-income`, income)
-      .catch((err) => {
-        setError(err.response.data.message);
+    try {
+      const response = await axios.post(`${BASE_URL}add-income`, income, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       });
-    getIncomes();
+      console.log(response.data.message);
+      getIncomes();
+    } catch (error) {
+      console.error(error.response.data.error);
+      setError(error.response.data.error);
+    }
   };
 
   const getIncomes = async () => {
-    const response = await axios.get(`${BASE_URL}get-income`);
-    setIncomes(response.data);
-    console.log(response.data);
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No token found in localStorage");
+      }
+
+      const url = `${BASE_URL}get-income`;
+      console.log("API endpoint URL:", url);
+
+      const response = await axios.get(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      console.log("Response data:", response);
+      setIncomes(response.data);
+    } catch (error) {
+      console.error("Error fetching incomes:", error.message);
+      // handle the error here
+    }
   };
 
   const deleteIncome = async (id) => {

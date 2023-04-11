@@ -16,9 +16,9 @@ const DashboardMain = () => {
       case 2:
         return;
       case 3:
-        return <Expense />;
-      case 4:
         return <Income />;
+      case 4:
+        return <Expense />;
       default:
         return;
     }
