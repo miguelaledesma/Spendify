@@ -59,10 +59,11 @@ function FinanceChart() {
       },
     ],
   };
+
   return (
     <ChartStyled>
       {" "}
-      <Line data={data} />{" "}
+      <Line data={data} />
     </ChartStyled>
   );
 }

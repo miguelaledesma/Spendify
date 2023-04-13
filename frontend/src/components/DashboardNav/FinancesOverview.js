@@ -4,6 +4,7 @@ import FinanceChart from "../DashboardNav/Items/Chart";
 import styled from "styled-components";
 import { InnerLayout } from "../../styles/Layout";
 import { dollar } from "../../utils/icons";
+import History from "./Transaction/History";
 
 function FinanceOverview() {
   const {
@@ -14,11 +15,13 @@ function FinanceOverview() {
     totalBalance,
     getIncomes,
     getExpenses,
+    transactionHistory,
   } = useGlobalContext();
 
   useEffect(() => {
     getExpenses();
     getIncomes();
+    transactionHistory();
   }, []);
   return (
     <DashboardStyled>
@@ -29,15 +32,19 @@ function FinanceOverview() {
             <FinanceChart />
             <div className="amount-con">
               <div className="income">
-                <h2>Total Income</h2>
+                <h2>Total Income </h2>
+                {" :"}{" "}
                 <p>
-                  {dollar} {totalIncome()}
+                  {dollar}
+                  {totalIncome()}
                 </p>
               </div>
               <div className="expense">
                 <h2>Total Expense</h2>
+                {" :"}{" "}
                 <p>
-                  {dollar} {totalExpenses()}
+                  {dollar}
+                  {totalExpenses()}
                 </p>
               </div>
               <div className="balance">
@@ -50,7 +57,7 @@ function FinanceOverview() {
             </div>
           </div>
           <div className="history-con">
-            {/* <History /> */}
+            <History />
             <h2 className="salary-title">
               Min <span>Salary</span>Max
             </h2>
@@ -85,6 +92,7 @@ const DashboardStyled = styled.div`
         grid-template-columns: repeat(4, 1fr);
         gap: 2rem;
         margin-top: 2rem;
+        max-width: 100%;
         .income,
         .expense {
           grid-column: span 2;
@@ -92,13 +100,14 @@ const DashboardStyled = styled.div`
         .income,
         .expense,
         .balance {
+          display: flex;
           background: #fcf6f9;
           border: 2px solid #ffffff;
           box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
           border-radius: 20px;
-          padding: 1rem;
+          padding: 2rem;
           p {
-            font-size: 3.5rem;
+            font-size: 1rem;
             font-weight: 700;
           }
         }
@@ -109,9 +118,9 @@ const DashboardStyled = styled.div`
           justify-content: center;
           align-items: center;
           p {
-            color: var(--color-green);
+            color: green;
             opacity: 0.6;
-            font-size: 4.5rem;
+            font-size: 2rem;
           }
         }
       }
