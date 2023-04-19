@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
-import jwtDecode from "jwt-decode";
 const BASE_URL = "http://localhost:5000/api/v1/";
 
 const GlobalContext = React.createContext();
