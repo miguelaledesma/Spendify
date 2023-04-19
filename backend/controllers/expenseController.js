@@ -42,3 +42,18 @@ exports.getExpenses = async (req, res) => {
     });
   }
 };
+
+exports.deleteExpense = async (req, res) => {
+  const { id } = req.params;
+  console.log(req.params);
+  ExpenseSchema.findByIdAndDelete(id)
+    .then((expense) => {
+      res.status(200).json({ message: "Income deleted" });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: "Income has already been deleted, please check server",
+        error: error.message,
+      });
+    });
+};

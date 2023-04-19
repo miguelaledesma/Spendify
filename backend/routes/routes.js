@@ -4,7 +4,11 @@ const {
   deleteIncome,
 } = require("../controllers/incomeController");
 const auth = require("../middleware/authentication");
-const { addExpense, getExpenses } = require("../controllers/expenseController");
+const {
+  addExpense,
+  getExpenses,
+  deleteExpense,
+} = require("../controllers/expenseController");
 const {
   getAllUsers,
   getUserById,
@@ -24,6 +28,7 @@ router.delete("/delete-income/:id", deleteIncome);
 
 //endpoint to add expense
 router.post("/add-expense", auth, addExpense);
+router.delete("/delete-expense/:id", deleteExpense);
 
 // endpoint to get expenses
 router.get("/get-expenses", auth, getExpenses);

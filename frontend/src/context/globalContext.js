@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
-import jwtDecode from "jwt-decode";
 const BASE_URL = "http://localhost:5000/api/v1/";
 
 const GlobalContext = React.createContext();
@@ -112,6 +111,11 @@ export const GlobalProvider = ({ children }) => {
     }
   };
 
+  const deleteExpense = async (id) => {
+    const res = await axios.delete(`${BASE_URL}delete-expense/${id}`);
+    getExpenses();
+  };
+
   const totalExpenses = () => {
     let totalIncome = 0;
     expenses.forEach((income) => {
@@ -150,6 +154,7 @@ export const GlobalProvider = ({ children }) => {
         getIncomes,
         incomes,
         deleteIncome,
+        deleteExpense,
         expenses,
         totalIncome,
         addExpense,
