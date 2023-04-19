@@ -122,16 +122,25 @@ export const GlobalProvider = ({ children }) => {
   };
 
   const totalBalance = () => {
-    return totalIncome() - totalExpenses();
+    const totalForIncomes = totalIncome();
+    const totalForExpenses = totalExpenses();
+    return Math.round((totalForIncomes - totalForExpenses) * 100) / 100;
   };
 
   const transactionHistory = () => {
     const history = [...incomes, ...expenses];
+    console.log({ incomes });
     history.sort((a, b) => {
       return new Date(b.createdAt) - new Date(a.createdAt);
     });
-
-    return history.slice(0, 3);
+    console.log("here", history);
+    const transactions = history.slice(0, 3);
+    if (transactions.length === 0) {
+      console.log("No transactions found");
+      return [];
+    } else {
+      return transactions;
+    }
   };
 
   return (
