@@ -28,7 +28,7 @@ router.delete("/delete-income/:id", deleteIncome);
 
 //endpoint to add expense
 router.post("/add-expense", auth, addExpense);
-router.delete("/delete-expense/:id", auth, deleteExpense);
+router.delete("/delete-expense/:id", deleteExpense);
 
 // endpoint to get expenses
 router.get("/get-expenses", auth, getExpenses);
