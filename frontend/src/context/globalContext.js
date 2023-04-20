@@ -25,6 +25,22 @@ export const GlobalProvider = ({ children }) => {
       throw new Error(error.response.data.message);
     }
   };
+  const signUpUser = async (name, email, password) => {
+    try {
+      const response = await axios.post(`${BASE_URL}sign-up`, {
+        name,
+        email,
+        password,
+      });
+      const { user, token } = response.data;
+      localStorage.setItem("token", token);
+      console.log(response.data);
+      setUser(user); // Set the user state with the returned user object
+      return user;
+    } catch (error) {
+      throw new Error(error.response.data.message);
+    }
+  };
   const addIncome = async (income) => {
     try {
       const response = await axios.post(`${BASE_URL}add-income`, income, {
@@ -167,6 +183,7 @@ export const GlobalProvider = ({ children }) => {
         user,
         setUser,
         loginUser,
+        signUpUser,
       }}
     >
       {children}
