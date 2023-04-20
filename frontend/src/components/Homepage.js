@@ -38,7 +38,7 @@ const Homepage = ({ isDarkMode, setDarkMode }) => {
                 Say goodbye to spreadsheet headaches and hello to effortless
                 expense tracking
               </p>
-              <Link to={token ? "/dashboard" : "/signup"}>
+              <Link to={token ? "/dashboard" : "/login"}>
                 <button
                   className="relative bg-blue-500 py-2 px-4 text-base rounded-md w-48 hover:bg-purple-600 focus:outline-none focus:shadow-outline-blue"
                   style={{
