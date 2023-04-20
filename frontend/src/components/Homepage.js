@@ -1,7 +1,18 @@
 import React from "react";
 import DarkModeTheme from "../styles/useDarkMode";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Homepage = ({ isDarkMode, setDarkMode }) => {
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+
+  const handleButtonClick = () => {
+    if (token) {
+      navigate("/dashboard");
+    } else {
+      navigate("/signup");
+    }
+  };
+
   const backgroundImageStyle = {
     backgroundImage: `url("https://images.unsplash.com/photo-1459257831348-f0cdd359235f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80")`,
     backgroundSize: "cover",
@@ -11,7 +22,7 @@ const Homepage = ({ isDarkMode, setDarkMode }) => {
   return (
     <div className="App dark:bg-gray-900 transition duration-300 ease dark:bg-gray-900 dark:focus:bg-white dark:focus:border-white dark:text-white dark:focus:text-black">
       <div className=" text-black dark:text-white" style={backgroundImageStyle}>
-        <div className="bg-gradient-to-r from-white px-8 py-16 dark:bg-gray-900 bg-gradient-to-l from-gray-1000">
+        <div className="bg-gradient-to-l from-white px-8 py-16 dark:bg-gray-900 bg-gradient-to-l from-gray-1000">
           <div className=" max-w-xl grid grid-cols-1 gap-8">
             <div className="w-12">
               {/* <ReactLogo className="fill-white" /> */}
@@ -27,7 +38,7 @@ const Homepage = ({ isDarkMode, setDarkMode }) => {
                 Say goodbye to spreadsheet headaches and hello to effortless
                 expense tracking
               </p>
-              <Link to="/signup">
+              <Link to={token ? "/dashboard" : "/login"}>
                 <button
                   className="relative bg-blue-500 py-2 px-4 text-base rounded-md w-48 hover:bg-purple-600 focus:outline-none focus:shadow-outline-blue"
                   style={{
@@ -37,8 +48,11 @@ const Homepage = ({ isDarkMode, setDarkMode }) => {
                     fontWeight: "bold",
                     transition: "background-color 0.5s",
                   }}
+                  onClick={handleButtonClick}
                 >
-                  <span className="relative z-10">Get Started</span>
+                  <span className="relative z-10">
+                    {token ? "Dashboard" : "Get Started"}
+                  </span>
                   <span className="absolute inset-0 bg-gradient-to-br from-green-400 via-blue-500 to-purple-600 opacity-0 transition-all duration-500"></span>
                 </button>
               </Link>

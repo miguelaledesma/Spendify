@@ -32,16 +32,14 @@ function FinanceOverview() {
             <FinanceChart />
             <div className="amount-con">
               <div className="income">
-                <h2>Total Income </h2>
-                {" :"}{" "}
+                <h2>Total Income: </h2>
                 <p>
                   {dollar}
                   {totalIncome()}
                 </p>
               </div>
               <div className="expense">
-                <h2>Total Expense</h2>
-                {" :"}{" "}
+                <h2>Total Expense: </h2>
                 <p>
                   {dollar}
                   {totalExpenses()}
@@ -62,15 +60,35 @@ function FinanceOverview() {
               Min <span>Salary</span>Max
             </h2>
             <div className="salary-item">
-              <p>${Math.min(...incomes.map((item) => item.amount))}</p>
-              <p>${Math.max(...incomes.map((item) => item.amount))}</p>
+              <p>
+                $
+                {incomes.length > 0
+                  ? Math.min(...incomes.map((item) => item.amount))
+                  : 0}
+              </p>
+              <p>
+                $
+                {incomes.length > 0
+                  ? Math.max(...incomes.map((item) => item.amount))
+                  : 0}
+              </p>
             </div>
             <h2 className="salary-title">
               Min <span>Expense</span>Max
             </h2>
             <div className="salary-item">
-              <p>${Math.min(...expenses.map((item) => item.amount))}</p>
-              <p>${Math.max(...expenses.map((item) => item.amount))}</p>
+              <p>
+                $
+                {expenses.length > 0
+                  ? Math.min(...incomes.map((item) => item.amount))
+                  : 0}
+              </p>
+              <p>
+                $
+                {expenses.length > 0
+                  ? Math.max(...incomes.map((item) => item.amount))
+                  : 0}
+              </p>
             </div>
           </div>
         </div>
