@@ -16,8 +16,12 @@ function Navigation({ active, setActive }) {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    history("/login");
+    history("/");
   };
+
+  const handleHome = () => {
+    history("/");
+  }
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -62,7 +66,8 @@ function Navigation({ active, setActive }) {
             })}
           </ul>
           <div className="bottom-nav">
-            <li onClick={handleLogout}>{signout} Sign Out</li>
+            <span className="sign-out-btn" onClick={handleLogout}>{signout} Sign Out</span>
+            <span className="home-btn" onClick={handleHome}>{signout} Home</span>
           </div>
         </NavStyled>
       ) : (
@@ -143,6 +148,14 @@ const NavStyled = styled.nav`
       background: #222260;
       border-radius: 0 10px 10px 0;
     }
+  }
+  .bottom-nav {
+    margin: 0 4%;
+    display: flex;
+    justify-content: space-around;
+  }
+  .sign-out-btn, .home-btn {
+    cursor: pointer;
   }
 `;
 
