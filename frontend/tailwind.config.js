@@ -56,5 +56,5 @@ module.exports = {
       "Noto Color Emoji",
     ],
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 };
