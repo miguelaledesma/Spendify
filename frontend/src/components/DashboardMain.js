@@ -5,6 +5,7 @@ import Expense from "./DashboardNav/Expenses";
 import Income from "./DashboardNav/Income";
 import { useGlobalContext } from "../context/globalContext";
 import FinanceOverview from "./DashboardNav/FinancesOverview";
+import ResponsiveNavigation from "./DashboardComponents/DaisyNavigation";
 // const BASE_URL = "http://localhost:5000/api/v1/";
 
 const DashboardMain = () => {
@@ -27,8 +28,9 @@ const DashboardMain = () => {
   };
   return (
     <div className="DashMainApp" class="h-screen relative">
+      <ResponsiveNavigation active={active} setActive={setActive} user={user} />
       <div className="mainAppLayout" class="p-8 h-full flex gap-8">
-        <Navigation active={active} setActive={setActive} user={user} />
+        {/* <Navigation active={active} setActive={setActive} user={user} /> */}
         <main
           class="flex-1 bg-rgba-252-246-249-78 border-3 border-white backdrop-blur-4.5 rounded-2xl overflow-x-hidden
 "

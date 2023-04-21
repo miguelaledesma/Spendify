@@ -24,76 +24,228 @@ function FinanceOverview() {
     transactionHistory();
   }, []);
   return (
-    <DashboardStyled>
-      <InnerLayout>
-        <h1>All Transactions</h1>
-        <div className="stats-con">
-          <div className="chart-con">
+    // <DashboardStyled>
+    <InnerLayout>
+      <h1>All Transactions</h1>
+      <div class="flex flex-wrap">
+        <div class="w-full md:w-1/2 px-4">
+          <div class="chart-con">
             <FinanceChart />
-            <div className="amount-con">
-              <div className="income">
-                <h2>Total Income: </h2>
-                <p>
-                  {dollar}
-                  {totalIncome()}
-                </p>
-              </div>
-              <div className="expense">
-                <h2>Total Expense: </h2>
-                <p>
-                  {dollar}
-                  {totalExpenses()}
-                </p>
-              </div>
-              <div className="balance">
-                <h2>Total Balance</h2>
-                <p>
-                  {dollar}
-                  {totalBalance()}
-                </p>
-              </div>
-            </div>
           </div>
-          <div className="history-con">
+        </div>
+        <div class="w-full md:w-1/2 px-4">
+          <div>
             <History />
-            <h2 className="salary-title">
-              Min <span>Salary</span>Max
-            </h2>
-            <div className="salary-item">
-              <p>
-                $
-                {incomes.length > 0
-                  ? Math.min(...incomes.map((item) => item.amount))
-                  : 0}
-              </p>
-              <p>
-                $
-                {incomes.length > 0
-                  ? Math.max(...incomes.map((item) => item.amount))
-                  : 0}
-              </p>
-            </div>
-            <h2 className="salary-title">
-              Min <span>Expense</span>Max
-            </h2>
-            <div className="salary-item">
-              <p>
-                $
-                {expenses.length > 0
-                  ? Math.min(...incomes.map((item) => item.amount))
-                  : 0}
-              </p>
-              <p>
-                $
-                {expenses.length > 0
-                  ? Math.max(...incomes.map((item) => item.amount))
-                  : 0}
-              </p>
+          </div>
+        </div>
+      </div>
+      <h2> Totals </h2>
+      <div className="flex flex-col w-full lg:flex-row">
+        <div className="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center">
+          <div className="stats shadow h-full w-full">
+            <div className="stat">
+              <div className="stat-title h-full w-full place-items-center">
+                Total Expense
+              </div>
+              <div className="stat-value h-full w-full"> {totalExpenses()}</div>
+              <div className="stat-desc h-full w-full"></div>
             </div>
           </div>
         </div>
-      </InnerLayout>
-    </DashboardStyled>
+        <div className="divider lg:divider-horizontal"></div>
+        <div className="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center">
+          <div className="stats shadow h-full w-full ">
+            <div className="stat h-full w-full ">
+              <div className="stat-title h-full w-full ">Total Income</div>
+              <div className="stat-value h-full w-full "> {totalIncome()}</div>
+              <div className="stat-desc h-full w-full "></div>
+            </div>
+          </div>
+        </div>
+        <div className="divider lg:divider-horizontal"></div>
+        <div className="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center">
+          <div className="stats shadow h-full w-full ">
+            <div className="stat h-full w-full ">
+              <div className="stat-title h-full w-full ">Total Balance</div>
+              <div className="stat-value h-full w-full "> {totalBalance()}</div>
+              <div className="stat-desc h-full w-full "></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="divider lg:divider-vertical"></div>
+      <h2> Stats</h2>
+      <div
+        style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
+      >
+        <div className="stats shadow">
+          <div className="stat">
+            <div className="stat-figure text-secondary">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                className="inline-block w-8 h-8 stroke-current"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+            </div>
+            <div className="stat-title">Min Income </div>
+            <div className="stat-value">
+              <p>
+                $
+                {incomes.length > 0
+                  ? Math.min(...incomes.map((item) => item.amount))
+                  : 0}
+              </p>
+            </div>
+            <div className="stat-desc"></div>
+          </div>
+
+          <div className="stat">
+            <div className="stat-figure text-secondary">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                className="inline-block w-8 h-8 stroke-current"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+                ></path>
+              </svg>
+            </div>
+            <div className="stat-title">Total Income Count</div>
+            <div className="stat-value">
+              <p>{incomes.length}</p>
+            </div>
+            <div className="stat-desc"></div>
+          </div>
+
+          <div className="stat">
+            <div className="stat-figure text-secondary">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                className="inline-block w-8 h-8 stroke-current"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
+                ></path>
+              </svg>
+            </div>
+            <div className="stat-title">Max Income</div>
+            <div className="stat-value">
+              <p>
+                $
+                {incomes.length > 0
+                  ? Math.max(...incomes.map((item) => item.amount))
+                  : 0}
+              </p>
+            </div>
+            <div className="stat-desc"></div>
+          </div>
+        </div>
+      </div>
+      <div className="divider lg:divider-vertical"></div>
+      <div
+        style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
+      >
+        <div className="stats shadow">
+          <div className="stat">
+            <div className="stat-figure text-primary">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                className="inline-block w-8 h-8 stroke-current"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+            </div>
+            <div className="stat-title">Min Expense Amount</div>
+            <div className="stat-value">
+              <p>
+                $
+                {expenses.length > 0
+                  ? Math.min(...expenses.map((item) => item.amount))
+                  : 0}
+              </p>
+            </div>
+            <div className="stat-desc"></div>
+          </div>
+
+          <div className="stat">
+            <div className="stat-figure text-primary">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                className="inline-block w-8 h-8 stroke-current"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+                ></path>
+              </svg>
+            </div>
+            <div className="stat-title">Total Count of Expenses</div>
+            <div className="stat-value">
+              <p>{expenses.length}</p>
+            </div>
+            <div className="stat-desc"></div>
+          </div>
+
+          <div className="stat">
+            <div className="stat-figure text-primary">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                className="inline-block w-8 h-8 stroke-current"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
+                ></path>
+              </svg>
+            </div>
+            <div className="stat-title">Max Expense</div>
+            <div className="stat-value">
+              <p>
+                $
+                {expenses.length > 0
+                  ? Math.max(...expenses.map((item) => item.amount))
+                  : 0}
+              </p>
+            </div>
+            <div className="stat-desc"></div>
+          </div>
+        </div>
+      </div>
+    </InnerLayout>
+    // {/* </DashboardStyled> */}
   );
 }
 
