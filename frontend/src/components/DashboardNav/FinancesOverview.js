@@ -28,7 +28,7 @@ function FinanceOverview() {
     <InnerLayout>
       <h1>All Transactions</h1>
       <div class="flex flex-wrap">
-        <div class="w-full md:w-1/2 px-4">
+        <div class="w-full md:w-full sm:w-full lg:w-1/2 px-4">
           <div class="chart-con">
             <FinanceChart />
           </div>

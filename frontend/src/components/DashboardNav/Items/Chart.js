@@ -59,10 +59,14 @@ function FinanceChart() {
       },
     ],
   };
+  const options = {
+    responsive: true,
+    maintainAspectRatio: true,
+  };
 
   return (
-    <div className="chart-container" style={{}}>
-      <Line data={data} />
+    <div className="chart-container" style={{ width: "100%", height: "100%" }}>
+      <Line data={data} options={options} />
     </div>
   );
 }
