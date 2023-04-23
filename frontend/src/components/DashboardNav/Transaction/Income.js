@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useGlobalContext } from "../../context/globalContext";
-import { InnerLayout } from "../../styles/Layout";
-import { Loader } from "../../styles/Loader";
-import IncomeForm from "../Forms/IncomeForm";
-import IncomeItem from "./Items/IncomeItems";
+import { useGlobalContext } from "../../../context/globalContext";
+import { InnerLayout } from "../../../styles/Layout";
+import { Loader } from "../../../styles/Loader";
+import IncomeForm from "../../Forms/IncomeForm";
+import IncomeItem from "../Items/IncomeItems";
 const Income = () => {
   const { addIncome, incomes, getIncomes, totalIncome, deleteIncome } =
     useGlobalContext();

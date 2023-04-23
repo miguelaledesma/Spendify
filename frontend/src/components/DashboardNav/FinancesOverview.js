@@ -28,7 +28,7 @@ function FinanceOverview() {
     <InnerLayout>
       <h1>All Transactions</h1>
       <div class="flex flex-wrap">
-        <div class="w-full md:w-full sm:w-full lg:w-1/2 px-4">
+        <div class="w-full md:w-full sm:w-full lg:w-1/2 px-4 ">
           <div class="chart-con">
             <FinanceChart />
           </div>
@@ -40,10 +40,10 @@ function FinanceOverview() {
         </div>
       </div>
       <h2> Totals </h2>
-      <div className="flex flex-col w-full lg:flex-row">
-        <div className="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center">
+      <div className="flex flex-col w-full lg:flex-row dark:bg-gray-900">
+        <div className="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center dark:bg-gray-900">
           <div className="stats shadow h-full w-full">
-            <div className="stat">
+            <div className="stat ">
               <div className="stat-title h-full w-full place-items-center">
                 Total Expense
               </div>

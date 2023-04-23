@@ -21,7 +21,7 @@ function Navigation({ active, setActive }) {
 
   const handleHome = () => {
     history("/");
-  }
+  };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -66,8 +66,12 @@ function Navigation({ active, setActive }) {
             })}
           </ul>
           <div className="bottom-nav">
-            <span className="sign-out-btn" onClick={handleLogout}>{signout} Sign Out</span>
-            <span className="home-btn" onClick={handleHome}>{signout} Home</span>
+            <span className="sign-out-btn" onClick={handleLogout}>
+              {signout} Sign Out
+            </span>
+            <span className="home-btn" onClick={handleHome}>
+              {signout} Home
+            </span>
           </div>
         </NavStyled>
       ) : (
@@ -154,7 +158,8 @@ const NavStyled = styled.nav`
     display: flex;
     justify-content: space-around;
   }
-  .sign-out-btn, .home-btn {
+  .sign-out-btn,
+  .home-btn {
     cursor: pointer;
   }
 `;

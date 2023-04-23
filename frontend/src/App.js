@@ -9,19 +9,19 @@ import LoginForm from "./components/LoginForm";
 function App() {
   const [isDarkMode, setDarkMode] = useState("light");
 
-  useEffect(() => {
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      document.documentElement.classList.add("dark");
-      setDarkMode("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      setDarkMode("light");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (
+  //     localStorage.theme === "dark" ||
+  //     (!("theme" in localStorage) &&
+  //       window.matchMedia("(prefers-color-scheme: dark)").matches)
+  //   ) {
+  //     document.documentElement.classList.add("dark");
+  //     setDarkMode("dark");
+  //   } else {
+  //     document.documentElement.classList.remove("dark");
+  //     setDarkMode("light");
+  //   }
+  // }, []);
 
   return (
     <Routes>

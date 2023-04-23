@@ -1,8 +1,8 @@
 import Navigation from "./DashboardNav/Navigation";
 import React, { useState, useEffect } from "react";
 
-import Expense from "./DashboardNav/Expenses";
-import Income from "./DashboardNav/Income";
+import Expense from "./DashboardNav/Transaction/Expenses";
+import Income from "./DashboardNav/Transaction/Income";
 import { useGlobalContext } from "../context/globalContext";
 import FinanceOverview from "./DashboardNav/FinancesOverview";
 import ResponsiveNavigation from "./DashboardComponents/DaisyNavigation";
@@ -29,7 +29,7 @@ const DashboardMain = () => {
   return (
     <div className="DashMainApp h-screen relative">
       <ResponsiveNavigation active={active} setActive={setActive} user={user} />
-      <div className="mainAppLayout p-4 h-full flex gap-3">
+      <div className="mainAppLayout p-4 h-full flex gap-3 dark:bg-gray-900">
         {/* <Navigation active={active} setActive={setActive} user={user} /> */}
         <main className="flex-1 bg-rgba-252-246-249-78 border-3 border-white backdrop-blur-4.5 rounded-2xl overflow-x-hidden">
           {renderComponent()}
