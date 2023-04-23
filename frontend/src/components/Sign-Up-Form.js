@@ -14,7 +14,7 @@ const SignUpForm = () => {
       const user = await signUpUser(name, email, password);
       setUser(user);
       console.log(user);
-      history("/login");
+      history("/dashboard");
     } catch (error) {
       setError(error.message);
     }
