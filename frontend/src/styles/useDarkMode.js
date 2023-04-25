@@ -11,15 +11,12 @@ const DarkModeTheme = ({ isDarkMode, setDarkMode }) => {
   };
 
   return (
-    <div
-      className="dark:bg-white toggle-animation cursor-pointer absolute top-4 right-4 w-9 h-5 rounded-full bg-black theme-transition"
-      onClick={handleTheme}
-      data-testid="toggle"
-    >
-      <div
-        className={`dark:bg-black w-3 h-3 rounded-full bg-white absolute top-1 theme-transition ${
-          isDarkMode === "light" ? "left-1" : "left-5"
-        }`}
+    <div className="fixed top-4 right-4 inline-flex items-center cursor-pointer">
+      <input
+        type="checkbox"
+        className="toggle"
+        checked={isDarkMode === "dark"}
+        onChange={handleTheme}
       />
     </div>
   );
