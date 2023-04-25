@@ -22,9 +22,19 @@ const Homepage = ({ isDarkMode, setDarkMode }) => {
 
   return (
     <div className="App dark:bg-gray-900 transition duration-300 ease dark:focus:bg-white dark:focus:border-white dark:text-white dark:focus:text-black">
-      <div className="navbar">
-        <img src="/logo.png" alt="Logo" className="w-10 h-12 mr-2" />
-        <a className="btn btn-ghost normal-case text-xl dark:text-white">
+      <div className="navbar fixed">
+        <div
+          className={`w-10 h-10 rounded-full flex items-center justify-center ${
+            isDarkMode === "dark" ? "bg-gray-900" : "bg-slate-600"
+          }`}
+        >
+          <img src="/logo.png" alt="Logo" className="w-8 h-8" />
+        </div>
+        <a
+          href="/"
+          src=""
+          className="btn btn-ghost normal-case text-xl dark:text-white"
+        >
           Spendify
         </a>
       </div>
