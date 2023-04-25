@@ -25,7 +25,7 @@ function History() {
                   <div className="stat-title h-full w-full">
                     <p
                       style={{
-                        color: type === "expense" ? "red" : "green",
+                        color: type === "expense" ? "#F87272" : "#66CC8A",
                         display: "inline-block",
                       }}
                     >
@@ -35,7 +35,7 @@ function History() {
                   <div className=" font-bold h-full w-full sm:text-xxl lg:text-xxl ">
                     <p
                       style={{
-                        color: type === "expense" ? "red" : "green",
+                        color: type === "expense" ? "#F87272" : "#66CC8A",
                         display: "inline-block",
                         marginLeft: "10px",
                       }}
