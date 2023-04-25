@@ -6,7 +6,12 @@ const FooterNav = () => {
       <div className="grid grid-flow-col gap-4">
         <Link className="link link-hover">About us</Link>
         <Link className="link link-hover">Contact</Link>
-        <Link className="link link-hover">Github</Link>
+        <a
+          href="https://www.github.com/miguelaledesma"
+          className="link link-hover"
+        >
+          Github
+        </a>
         <Link className="link link-hover">Blog</Link>
       </div>
       <div>
