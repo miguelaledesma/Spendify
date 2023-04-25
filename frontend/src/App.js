@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Homepage from "./components/Homepage";
 import SignUpForm from "./components/Sign-Up-Form";
@@ -9,19 +9,19 @@ import LoginForm from "./components/LoginForm";
 function App() {
   const [isDarkMode, setDarkMode] = useState("light");
 
-  // useEffect(() => {
-  //   if (
-  //     localStorage.theme === "dark" ||
-  //     (!("theme" in localStorage) &&
-  //       window.matchMedia("(prefers-color-scheme: dark)").matches)
-  //   ) {
-  //     document.documentElement.classList.add("dark");
-  //     setDarkMode("dark");
-  //   } else {
-  //     document.documentElement.classList.remove("dark");
-  //     setDarkMode("light");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+      setDarkMode("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      setDarkMode("light");
+    }
+  }, []);
 
   return (
     <Routes>
