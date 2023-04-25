@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState } from "react";
-import { BrowserRouter as Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Homepage from "./components/Homepage";
 import SignUpForm from "./components/Sign-Up-Form";
 import DashboardMain from "./components/DashboardMain";

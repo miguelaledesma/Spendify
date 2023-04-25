@@ -24,9 +24,9 @@ const Homepage = ({ isDarkMode, setDarkMode }) => {
     <div className="App dark:bg-gray-900 transition duration-300 ease dark:focus:bg-white dark:focus:border-white dark:text-white dark:focus:text-black">
       <div className="navbar">
         <img src="/logo.png" alt="Logo" className="w-10 h-12 mr-2" />
-        <Link className="btn btn-ghost normal-case text-xl dark:text-white">
+        <a className="btn btn-ghost normal-case text-xl dark:text-white">
           Spendify
-        </Link>
+        </a>
       </div>
       <div
         className="hero min-h-screen"
