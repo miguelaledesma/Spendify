@@ -6,8 +6,7 @@ import { Loader } from "../../../styles/Loader";
 import IncomeForm from "../../Forms/IncomeForm";
 import IncomeItem from "../Items/IncomeItems";
 const Income = () => {
-  const { addIncome, incomes, getIncomes, totalIncome, deleteIncome } =
-    useGlobalContext();
+  const { incomes, getIncomes, totalIncome, deleteIncome } = useGlobalContext();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

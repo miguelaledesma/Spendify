@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context/globalContext";
 import { useNavigate } from "react-router-dom";
-const BASE_URL = "http://localhost:5000/api/v1/";
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

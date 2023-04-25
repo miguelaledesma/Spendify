@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 const BASE_URL = "http://localhost:5000/api/v1/";
 
@@ -81,7 +81,7 @@ export const GlobalProvider = ({ children }) => {
   };
 
   const deleteIncome = async (id) => {
-    const res = await axios.delete(`${BASE_URL}delete-income/${id}`);
+    await axios.delete(`${BASE_URL}delete-income/${id}`);
     getIncomes();
   };
 
@@ -128,7 +128,7 @@ export const GlobalProvider = ({ children }) => {
   };
 
   const deleteExpense = async (id) => {
-    const res = await axios.delete(`${BASE_URL}delete-expense/${id}`);
+    await axios.delete(`${BASE_URL}delete-expense/${id}`);
     getExpenses();
   };
 
