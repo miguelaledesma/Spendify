@@ -1,5 +1,4 @@
-import Navigation from "./DashboardNav/Navigation";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import Expense from "./DashboardNav/Transaction/Expenses";
 import Income from "./DashboardNav/Transaction/Income";

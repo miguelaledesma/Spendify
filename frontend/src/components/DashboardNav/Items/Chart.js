@@ -10,7 +10,6 @@ import {
   Legend,
   ArcElement,
 } from "chart.js";
-import styled from "styled-components";
 import { Line } from "react-chartjs-2";
 import { useGlobalContext } from "../../../context/globalContext";
 import { dateFormat } from "../../../utils/dateFormat";

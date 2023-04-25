@@ -3,7 +3,6 @@ import { useGlobalContext } from "../../context/globalContext";
 import FinanceChart from "../DashboardNav/Items/Chart";
 import styled from "styled-components";
 import { InnerLayout } from "../../styles/Layout";
-import { dollar } from "../../utils/icons";
 import History from "./Transaction/History";
 
 function FinanceOverview() {
