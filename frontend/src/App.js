@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import Homepage from "./components/Homepage";
+import Homepage from "./components/Landing/Homepage";
 import SignUpForm from "./components/Sign-Up-Form";
 import DashboardMain from "./components/DashboardMain";
 import LoginForm from "./components/LoginForm";
