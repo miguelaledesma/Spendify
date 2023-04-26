@@ -88,11 +88,9 @@ const ResponsiveNavigation = ({ active, setActive }) => {
           </button>
         </div>
         <div className="tooltip tooltip-bottom" data-tip="home">
-          <button className="btn btn-ghost btn-circle">
+          <button className="btn btn-ghost btn-circle" onClick={handleHome}>
             <div className="indicator">
-              <span className="home-btn" onClick={handleHome}>
-                {home}
-              </span>
+              <span className="home-btn">{home}</span>
             </div>
           </button>
         </div>

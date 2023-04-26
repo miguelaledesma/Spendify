@@ -100,7 +100,11 @@ const FormItems = ({
               {amount}
             </div>
             <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-              {comment} {description}
+              <div className="tooltip tooltip-bottom" data-tip={description}>
+                <div className="indicator">
+                  <span className="home-btn">{comment}</span>
+                </div>
+              </div>
             </div>
             <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
               <Button icon={trash} onClick={() => deleteItem(id)} />
