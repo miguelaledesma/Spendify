@@ -1,7 +1,9 @@
 import React from "react";
-import DarkModeTheme from "../styles/useDarkMode";
+import DarkModeTheme from "../../styles/useDarkMode";
 import { Link, useNavigate } from "react-router-dom";
-import FooterNav from "./Footer";
+import FooterNav from "../Footer";
+import LandingContent from "./LandingContent";
+import WaitingList from "./WaitingList";
 const Homepage = ({ isDarkMode, setDarkMode }) => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
@@ -45,19 +47,26 @@ const Homepage = ({ isDarkMode, setDarkMode }) => {
         }}
       >
         <div className="hero-content text-center text-neutral-content">
-          <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold text-black dark:text-white">
-              Track Your Expenses like a Pro
+          <div className="max-w-lg px-4 py-32 mx-auto mt-px text-left md:max-w-none md:text-center">
+            <h1 class="text-5xl font-extrabold leading-10 tracking-tight text-left text-gray-900 md:text-center sm:leading-none md:text-6xl lg:text-7xl dark:text-white">
+              <span class="inline md:block">
+                Take Control of Your Finances,
+              </span>{" "}
+              <span class="relative mt-2 text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-indigo-500 md:inline-block">
+                Effortlessly.
+              </span>
             </h1>
-            <p className="mb-5">Take control of your finances, effortlessly.</p>
-            <p className="text-lg text-center mb-4">
+            <div class="mx-auto mt-4 sm:mt-8 md:mt-12 lg:mt-12 text-gray-500 md:max-w-lg md:text-center lg:text-lg">
               Say goodbye to spreadsheet headaches and hello to effortless
               expense tracking
-            </p>
+            </div>
 
             <Link to={token ? "/dashboard" : "/login"}>
-              <button className="btn btn-primary" onClick={handleButtonClick}>
-                <span className="relative z-10">
+              <button
+                className="btn btn-primary px-8 py-4 mt-12"
+                onClick={handleButtonClick}
+              >
+                <span className="relative z-10 text-white">
                   {token ? "Dashboard" : "Get Started"}
                 </span>
               </button>
@@ -66,14 +75,26 @@ const Homepage = ({ isDarkMode, setDarkMode }) => {
         </div>
       </div>
 
-      <div className="px-8 py-8 ">
-        <div className="max-w-md mb-16 mx-auto">
-          <h2 className="text-5xl dark:text-white">
-            Track your expenses like a Pro
+      <div className="">
+        {/* <div className="max-w-md mb-16 mx-auto">
+          <h2 className="dark:text-white font-extrabold">
+            <span className="text-6xl"> Track your expenses like a Pro </span>
           </h2>
+        </div> */}
+        <div class="max-w-7xl mx-auto py-16 px-10 sm:py-24 sm:px-3 lg:px-0 sm:text-center">
+          <p class="mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl dark:text-white">
+            Track your expenses like a Pro
+          </p>
+          {/* <p class="max-w-3xl mt-5 mx-auto text-xl text-gray-500">
+            Are you ready to start building the next great idea. You can start
+            off by using our design components to help tell you story and
+            showcase your great idea.
+          </p> */}
         </div>
 
-        <div className="grid grid-cols-2 gap-4 text-slate-600 dark:text-white">
+        <LandingContent />
+        <WaitingList />
+        {/* <div className="grid grid-cols-2 gap-4 text-slate-600 dark:text-white">
           <div>
             <h3 className="text-2xl font-bold mb-2 dark:text-white">
               Tracking
@@ -93,9 +114,10 @@ const Homepage = ({ isDarkMode, setDarkMode }) => {
               easily add expenses, categorize them, and view detailed reports.
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
       <DarkModeTheme isDarkMode={isDarkMode} setDarkMode={setDarkMode} />
+
       <FooterNav />
     </div>
   );
