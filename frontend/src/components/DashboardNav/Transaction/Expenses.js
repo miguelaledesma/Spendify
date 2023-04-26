@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useGlobalContext } from "../../../context/globalContext";
 import { InnerLayout } from "../../../styles/Layout";
@@ -6,9 +6,23 @@ import ExpenseForm from "../../Forms/ExpenseForm";
 import FormItems from "../Items/FormItems";
 import IncomeItem from "../Items/IncomeItems";
 
+const PAGE_SIZE = 4;
+
 function Expenses() {
   const { expenses, getExpenses, deleteExpense, totalExpenses } =
     useGlobalContext();
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const startIndex = (currentPage - 1) * PAGE_SIZE;
+  const endIndex = startIndex + PAGE_SIZE;
+
+  const expensesToDisplay = expenses.slice(startIndex, endIndex);
+
+  const totalPages = Math.ceil(expenses.length / PAGE_SIZE);
+
+  function handlePageChange(pageNumber) {
+    setCurrentPage(pageNumber);
+  }
 
   useEffect(() => {
     getExpenses();
@@ -31,13 +45,14 @@ function Expenses() {
                         All Expenses
                       </h5>
                       <a
-                        href="#"
+                        href="/dashboard"
+                        src=""
                         class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500"
                       >
                         View all
                       </a>
                     </div>
-                    {expenses.map((income) => {
+                    {expensesToDisplay.map((income) => {
                       const {
                         _id,
                         title,
@@ -62,6 +77,23 @@ function Expenses() {
                         />
                       );
                     })}
+                    <div className="flex justify-center mt-4">
+                      {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                        (pageNumber) => (
+                          <button
+                            key={pageNumber}
+                            className={`mx-1 px-3 py-1 rounded-full focus:outline-none ${
+                              currentPage === pageNumber
+                                ? "bg-blue-600 text-white"
+                                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                            }`}
+                            onClick={() => handlePageChange(pageNumber)}
+                          >
+                            {pageNumber}
+                          </button>
+                        )
+                      )}
+                    </div>
                   </div>
                 </div>
                 <p class="text-2xl text-gray-700"></p>
