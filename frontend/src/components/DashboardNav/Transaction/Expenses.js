@@ -28,18 +28,18 @@ function Expenses() {
     getExpenses();
   }, []);
   return (
-    <section class="w-full bg-white">
+    <section class="w-full">
       <div class="mx-auto max-w-7xl">
         <div class="flex flex-col lg:flex-row">
           <ExpenseForm />
 
-          <div class="w-full bg-white lg:w-1/2 xl:w-1/2">
+          <div class="w-full lg:w-1/2 xl:w-1/2">
             <div class="relative flex flex-col items-center justify-center w-full h-full px-10 my-20 lg:px-16 lg:my-0">
               <div class="flex flex-col items-start space-y-8 tracking-tight lg:max-w-3xl">
                 <div class="relative">
                   <p class="mb-2 font-medium text-gray-700 uppercase"></p>
 
-                  <div class="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+                  <div class="w-full max-w-md p-4 border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                     <div class="flex items-center justify-between mb-4">
                       <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">
                         All Expenses

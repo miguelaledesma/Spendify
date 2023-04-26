@@ -100,7 +100,7 @@ const FormItems = ({
               {amount}
             </div>
             <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-              <div className="tooltip tooltip-bottom" data-tip={description}>
+              <div className="tooltip tooltip-top" data-tip={description}>
                 <div className="indicator">
                   <span className="home-btn">{comment}</span>
                 </div>
