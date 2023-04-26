@@ -77,7 +77,7 @@ function FinanceOverview() {
       <div
         style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
       >
-        <div className="stats shadow">
+        <div className="stats shadow stats-vertical lg:stats-horizontal">
           <div className="stat">
             <div className="stat-figure text-secondary">
               <svg
@@ -162,7 +162,7 @@ function FinanceOverview() {
       <div
         style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
       >
-        <div className="stats shadow">
+        <div className="stats shadow stats-vertical lg:stats-horizontal">
           <div className="stat">
             <div className="stat-figure text-primary">
               <svg
@@ -179,7 +179,7 @@ function FinanceOverview() {
                 ></path>
               </svg>
             </div>
-            <div className="stat-title">Min Expense Amount</div>
+            <div className="stat-title">Min Expense</div>
             <div className="stat-value">
               <p>
                 $
@@ -207,7 +207,7 @@ function FinanceOverview() {
                 ></path>
               </svg>
             </div>
-            <div className="stat-title">Total Count of Expenses</div>
+            <div className="stat-title">Total Expense Count</div>
             <div className="stat-value">
               <p>{expenses.length}</p>
             </div>
