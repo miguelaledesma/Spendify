@@ -3,6 +3,7 @@ import DarkModeTheme from "../../styles/useDarkMode";
 import { Link, useNavigate } from "react-router-dom";
 import FooterNav from "../Footer";
 import LandingContent from "./LandingContent";
+import WaitingList from "./WaitingList";
 const Homepage = ({ isDarkMode, setDarkMode }) => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
@@ -92,7 +93,7 @@ const Homepage = ({ isDarkMode, setDarkMode }) => {
         </div>
 
         <LandingContent />
-
+        <WaitingList />
         {/* <div className="grid grid-cols-2 gap-4 text-slate-600 dark:text-white">
           <div>
             <h3 className="text-2xl font-bold mb-2 dark:text-white">
@@ -116,6 +117,7 @@ const Homepage = ({ isDarkMode, setDarkMode }) => {
         </div> */}
       </div>
       <DarkModeTheme isDarkMode={isDarkMode} setDarkMode={setDarkMode} />
+
       <FooterNav />
     </div>
   );
