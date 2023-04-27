@@ -1,6 +1,6 @@
 import React from "react";
 import { useGlobalContext } from "../../../context/globalContext";
-
+//deprecated
 function History() {
   const { transactionHistory } = useGlobalContext();
 

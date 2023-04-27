@@ -3,7 +3,7 @@ import { useGlobalContext } from "../../context/globalContext";
 import FinanceChart from "../DashboardNav/Items/Chart";
 import styled from "styled-components";
 import { InnerLayout } from "../../styles/Layout";
-import History from "./Transaction/History";
+import RecentTransactions from "./Transaction/RecentTransactions";
 
 function FinanceOverview() {
   const {
@@ -25,16 +25,28 @@ function FinanceOverview() {
   return (
     // <DashboardStyled>
     <InnerLayout>
-      <h1>All Transactions</h1>
+      <div className="rounded-t mb-0 px-0 py-0 bg-transparent">
+        <div className="flex flex-wrap items-center">
+          <div className="relative w-full max-w-full flex-grow flex-1">
+            <h6 className="uppercase text-blueGray-100 mb-1 text-xs font-semibold">
+              Financial Overview
+            </h6>
+            <h2 className="text-black text-5xl font-extrabold dark:text-white pb-1">
+              ${totalBalance()}
+            </h2>
+          </div>
+        </div>
+      </div>
       <div class="flex flex-wrap">
-        <div class="w-full md:w-full sm:w-full lg:w-1/2 px-4 ">
-          <div class="chart-con">
+        <div class="w-full md:w-full sm:w-full lg:w-1/2 px-4 py-90 pb-10 sm:pb-0">
+          <div class="h-full">
             <FinanceChart />
           </div>
         </div>
-        <div class="w-full md:w-1/2 px-4">
+
+        <div class="w-full md:w-full sm:w-full lg:w-1/2 px-4 py-90 ">
           <div>
-            <History />
+            <RecentTransactions />
           </div>
         </div>
       </div>
@@ -46,7 +58,10 @@ function FinanceOverview() {
               <div className="stat-title h-full w-full place-items-center">
                 Total Expense
               </div>
-              <div className="stat-value h-full w-full"> {totalExpenses()}</div>
+              <div className="stat-value h-full w-full">
+                {" "}
+                ${totalExpenses()}
+              </div>
               <div className="stat-desc h-full w-full"></div>
             </div>
           </div>
@@ -56,7 +71,7 @@ function FinanceOverview() {
           <div className="stats shadow h-full w-full ">
             <div className="stat h-full w-full ">
               <div className="stat-title h-full w-full ">Total Income</div>
-              <div className="stat-value h-full w-full "> {totalIncome()}</div>
+              <div className="stat-value h-full w-full "> ${totalIncome()}</div>
               <div className="stat-desc h-full w-full "></div>
             </div>
           </div>
@@ -66,7 +81,10 @@ function FinanceOverview() {
           <div className="stats shadow h-full w-full ">
             <div className="stat h-full w-full ">
               <div className="stat-title h-full w-full ">Total Balance</div>
-              <div className="stat-value h-full w-full "> {totalBalance()}</div>
+              <div className="stat-value h-full w-full ">
+                {" "}
+                ${totalBalance()}
+              </div>
               <div className="stat-desc h-full w-full "></div>
             </div>
           </div>

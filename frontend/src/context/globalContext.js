@@ -154,7 +154,7 @@ export const GlobalProvider = ({ children }) => {
       return new Date(b.createdAt) - new Date(a.createdAt);
     });
     console.log("here", history);
-    const transactions = history.slice(0, 3);
+    const transactions = history.slice(0, history.length);
     if (transactions.length === 0) {
       console.log("No transactions found");
       return [];
