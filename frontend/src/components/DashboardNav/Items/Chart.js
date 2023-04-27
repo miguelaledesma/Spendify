@@ -43,7 +43,8 @@ function FinanceChart() {
           }),
         ],
         backgroundColor: "green",
-        tension: 0.2,
+        borderColor: "green",
+        tension: 0.5,
       },
       {
         label: "Expenses",
@@ -54,18 +55,43 @@ function FinanceChart() {
           }),
         ],
         backgroundColor: "red",
-        tension: 0.2,
+        borderColor: "red",
+        tension: 0.5,
       },
     ],
   };
   const options = {
     responsive: true,
-    maintainAspectRatio: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        labels: {
+          color: "gray",
+        },
+      },
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: "gray",
+          fontSize: window.innerWidth < 768 ? "5px" : 12,
+        },
+      },
+      y: {
+        ticks: {
+          color: "gray",
+          fontSize: window.innerWidth < 768 ? "5px" : 12,
+        },
+      },
+    },
   };
 
   return (
-    <div className="chart-container" style={{ width: "100%", height: "100%" }}>
-      <Line data={data} options={options} />
+    <div
+      className="relative col-span-1 m-auto h-[50vh] w-full overflow-scroll rounded-lg border bg-white p-4 lg:h-[43vh] dark:bg-gray-800"
+      style={{ width: "100%", height: "100%" }}
+    >
+      <Line type="line" data={data} options={options} />
     </div>
   );
 }
