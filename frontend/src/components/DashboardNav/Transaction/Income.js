@@ -5,64 +5,102 @@ import { InnerLayout } from "../../../styles/Layout";
 import { Loader } from "../../../styles/Loader";
 import IncomeForm from "../../Forms/IncomeForm";
 import IncomeItem from "../Items/IncomeItems";
+import FormItems from "../Items/FormItems";
+const PAGE_SIZE = 4;
 const Income = () => {
   const { incomes, getIncomes, totalIncome, deleteIncome } = useGlobalContext();
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const startIndex = (currentPage - 1) * PAGE_SIZE;
+  const endIndex = startIndex + PAGE_SIZE;
+
+  const incomesToDisplay = incomes.slice(startIndex, endIndex);
+
+  const totalPages = Math.ceil(incomes.length / PAGE_SIZE);
+
+  function handlePageChange(pageNumber) {
+    setCurrentPage(pageNumber);
+  }
 
   useEffect(() => {
-    setTimeout(() => {
-      getIncomes();
-      setIsLoading(false);
-    }, 2000);
+    getIncomes();
   }, []);
   return (
-    <IncomeStyled>
-      <InnerLayout>
-        <h1>Incomes</h1>
+    <section class="w-full">
+      <div class="mx-auto max-w-7xl">
+        <div class="flex flex-col lg:flex-row">
+          <IncomeForm />
 
-        <h2 className="total-income">
-          Total Income: <span>${totalIncome()}</span>
-        </h2>
-        {isLoading ? (
-          // display loader while data is being fetched
-          <Loader />
-        ) : (
-          // display income items when data is loaded
-          <div className="income-content">
-            <div className="form-container">
-              <IncomeForm />
-            </div>
-            <div className="incomes">
-              {incomes.map((income) => {
-                const {
-                  _id,
-                  title,
-                  amount,
-                  date,
-                  category,
-                  description,
-                  type,
-                } = income;
-                return (
-                  <IncomeItem
-                    key={_id}
-                    id={_id}
-                    title={title}
-                    description={description}
-                    amount={amount}
-                    date={date}
-                    type={type}
-                    category={category}
-                    indicatorColor="#42AD00"
-                    deleteItem={deleteIncome}
-                  />
-                );
-              })}
+          <div class="w-full lg:w-1/2 xl:w-1/2">
+            <div class="relative flex flex-col items-center justify-center w-full h-full px-10 my-20 lg:px-16 lg:my-0">
+              <div class="flex flex-col items-start space-y-8 tracking-tight lg:max-w-3xl">
+                <div class="relative">
+                  <p class="mb-2 font-medium text-gray-700 uppercase"></p>
+
+                  <div class="w-full max-w-md p-4 border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 min-h-60">
+                    <div class="flex items-center justify-between mb-4">
+                      <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">
+                        All Expenses
+                      </h5>
+                      <a
+                        href="/dashboard"
+                        src=""
+                        class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500"
+                      >
+                        View all
+                      </a>
+                    </div>
+                    {incomesToDisplay.map((income) => {
+                      const {
+                        _id,
+                        title,
+                        amount,
+                        date,
+                        category,
+                        description,
+                        type,
+                      } = income;
+                      console.log(income);
+                      return (
+                        <FormItems
+                          key={income._id}
+                          id={_id}
+                          title={title}
+                          description={description}
+                          amount={amount}
+                          date={date}
+                          type={type}
+                          category={category}
+                          deleteItem={deleteIncome}
+                        />
+                      );
+                    })}
+                    <div className="flex justify-center mt-4">
+                      {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                        (pageNumber) => (
+                          <button
+                            key={pageNumber}
+                            className={`mx-1 px-3 py-1 rounded-full focus:outline-none ${
+                              currentPage === pageNumber
+                                ? "bg-blue-600 text-white"
+                                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                            }`}
+                            onClick={() => handlePageChange(pageNumber)}
+                          >
+                            {pageNumber}
+                          </button>
+                        )
+                      )}
+                    </div>
+                  </div>
+                </div>
+                <p class="text-2xl text-gray-700"></p>
+              </div>
             </div>
           </div>
-        )}
-      </InnerLayout>
-    </IncomeStyled>
+        </div>
+      </div>
+    </section>
   );
 };
 
