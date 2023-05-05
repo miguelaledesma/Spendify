@@ -47,7 +47,7 @@ const FormItems = ({
         return bitcoin;
       case "bank":
         return card;
-      case "youtube":
+      case "social media":
         return yt;
       case "other":
         return piggy;
