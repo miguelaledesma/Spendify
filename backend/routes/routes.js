@@ -16,6 +16,7 @@ const {
   userSignUp,
   userLogin,
 } = require("../controllers/UserController");
+const { addToWaitList } = require("../controllers/waitlistController");
 
 const router = require("express").Router();
 
@@ -38,4 +39,9 @@ router.get("/users", getAllUsers);
 router.get("/user/:id", getUserById);
 router.delete("user/:id", deleteUserById);
 router.post("/login", userLogin);
+
+//waiting list endpoint:
+
+router.post("/wait-list", addToWaitList);
+
 module.exports = { router };
