@@ -8,7 +8,7 @@ import { menuItems } from "../../utils/menu-items";
 import jwt_decode from "jwt-decode";
 import { Loader } from "../../styles/Loader";
 
-const BASE_URL = "http://localhost:5000/api/v1/";
+const BASE_URL = "http://localhost:8080/api/v1/";
 
 function Navigation({ active, setActive }) {
   const history = useNavigate();
