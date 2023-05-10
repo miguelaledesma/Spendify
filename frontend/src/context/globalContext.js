@@ -1,8 +1,11 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
-export const BASE_URL = "http://localhost:8080/api/v1/";
 
 const GlobalContext = React.createContext();
+const isLocal = process.env.NODE_ENV === "development";
+export const BASE_URL = isLocal
+  ? process.env.REACT_APP_BASE_URL_LOCAL
+  : process.env.REACT_APP_BASE_URL_DEPLOYED;
 
 export const GlobalProvider = ({ children }) => {
   const [incomes, setIncomes] = useState([]);
