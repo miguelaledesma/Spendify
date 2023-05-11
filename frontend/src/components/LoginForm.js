@@ -6,6 +6,8 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { setUser, setError, loginUser } = useGlobalContext();
+  const [message, setMessage] = useState(null);
+  const [messageType, setMessageType] = useState(null);
   const history = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -13,22 +15,68 @@ const LoginForm = () => {
     try {
       const user = await loginUser(email, password);
       setUser(user);
+      setMessage("Login successful!");
+      setMessageType("success");
       console.log(user);
       history("/dashboard");
     } catch (error) {
       setError(error.message);
+      console.log(error.message);
+      setMessage(`Login Unsuccessful: ${error.message}`);
+      setMessageType("error");
     }
   };
   return (
-    <div class="">
+    <div>
       <section class="bg-gray-50 dark:bg-gray-900 h-screen">
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           {/* <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
           <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo">
           Flowbite    
       </a> */}
+
           <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700  my-12 sm:my-8 ">
             <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+              {message && (
+                <div
+                  className={`alert ${
+                    messageType === "success" ? "alert-success" : "alert-error"
+                  } shadow-lg`}
+                >
+                  <div>
+                    {messageType === "success" ? (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="stroke-current flex-shrink-0 h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    ) : (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="stroke-current flex-shrink-0 h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    )}
+                    <span>{message}</span>
+                  </div>
+                </div>
+              )}
               <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 Welcome back!
               </h1>
@@ -87,12 +135,6 @@ const LoginForm = () => {
                       </label>
                     </div>
                   </div>
-                  {/* <a
-                    href="#"
-                    class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
-                  >
-                    Forgot password?
-                  </a> */}
                 </div>
                 <button
                   type="submit"
