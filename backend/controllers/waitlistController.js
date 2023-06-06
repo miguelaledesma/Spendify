@@ -1,5 +1,7 @@
 const WaitlistSchema = require("../models/WaitlistModel");
 
+const nodemailer = require("nodemailer");
+
 exports.addToWaitList = async (req, res) => {
   try {
     const { email } = req.body;
@@ -15,6 +17,30 @@ exports.addToWaitList = async (req, res) => {
     });
 
     await userOnWaitList.save();
+
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        type: "login",
+        user: `${process.env.GMAIL_EMAIL}`,
+        pass: `${process.env.GMAIL_PASSWORD}`,
+      },
+    });
+
+    const mailOptions = {
+      from: `${process.env.GMAIL_EMAIL}`,
+      to: email,
+      subject: "Spendify AI Waitlist Confirmation",
+      text: "Thank you for joining the waitlist! We will notify you once Spendify AI is ready!",
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error("Error sending email", error);
+      } else {
+        console.log(Sent, info.response);
+      }
+    });
     res.status(200).json({
       message: "Added to the mailing list",
     });
