@@ -19,6 +19,7 @@ const WaitingList = () => {
         setMessage(
           "You have been added to the waitlist, check your email. We will be sending out updates soon!"
         );
+        setEmail("");
       } else {
         // Handle error case
         console.log("Error adding to waitlist");
