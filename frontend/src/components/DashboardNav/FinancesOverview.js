@@ -50,15 +50,18 @@ function FinanceOverview() {
           </div>
         </div>
       </div>
-      <h2> Totals </h2>
+      <h2 class="pt-4 uppercase text-blueGray-100 mb-1 text-xs font-semibold">
+        {" "}
+        Totals{" "}
+      </h2>
       <div className="flex flex-col w-full lg:flex-row dark:bg-gray-900">
         <div className="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center dark:bg-gray-900">
-          <div className="stats shadow h-full w-full">
-            <div className="stat ">
-              <div className="stat-title h-full w-full place-items-center">
-                Total Expense
+          <div className="stats shadow h-full w-full dark:bg-gray-800">
+            <div className="stat dark:bg-gray-800">
+              <div className="stat-title h-full w-full place-items-center dark:text-white uppercase">
+                Expenses
               </div>
-              <div className="stat-value h-full w-full">
+              <div className="stat-value h-full w-full dark:text-white">
                 {" "}
                 ${totalExpenses()}
               </div>
@@ -68,20 +71,27 @@ function FinanceOverview() {
         </div>
         <div className="divider lg:divider-horizontal"></div>
         <div className="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center">
-          <div className="stats shadow h-full w-full ">
-            <div className="stat h-full w-full ">
-              <div className="stat-title h-full w-full ">Total Income</div>
-              <div className="stat-value h-full w-full "> ${totalIncome()}</div>
+          <div className="stats shadow h-full w-full dark:bg-gray-800">
+            <div className="stat h-full w-full dark:bg-gray-800">
+              <div className="stat-title h-full w-full dark:text-white uppercase ">
+                Income
+              </div>
+              <div className="stat-value h-full w-full dark:text-white">
+                {" "}
+                ${totalIncome()}
+              </div>
               <div className="stat-desc h-full w-full "></div>
             </div>
           </div>
         </div>
         <div className="divider lg:divider-horizontal"></div>
         <div className="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center">
-          <div className="stats shadow h-full w-full ">
-            <div className="stat h-full w-full ">
-              <div className="stat-title h-full w-full ">Total Balance</div>
-              <div className="stat-value h-full w-full ">
+          <div className="stats shadow h-full w-full dark:bg-gray-800 ">
+            <div className="stat h-full w-full dark:bg-gray-800">
+              <div className="stat-title h-full w-full dark:text-white uppercase">
+                Balance
+              </div>
+              <div className="stat-value h-full w-full dark:text-white">
                 {" "}
                 ${totalBalance()}
               </div>
@@ -91,12 +101,15 @@ function FinanceOverview() {
         </div>
       </div>
       <div className="divider lg:divider-vertical"></div>
-      <h2> Stats</h2>
+      <h2 class=" uppercase text-blueGray-100 mb-1 text-xs font-semibold">
+        {" "}
+        Stats
+      </h2>
       <div
         style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
       >
-        <div className="stats shadow stats-vertical lg:stats-horizontal">
-          <div className="stat">
+        <div className="stats shadow stats-vertical lg:stats-horizontal dark:bg-gray-800">
+          <div className="stat ">
             <div className="stat-figure text-secondary">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -112,8 +125,8 @@ function FinanceOverview() {
                 ></path>
               </svg>
             </div>
-            <div className="stat-title">Min Income </div>
-            <div className="stat-value">
+            <div className="stat-title dark:text-white">Min Income </div>
+            <div className="stat-value dark:text-white">
               <p>
                 $
                 {incomes.length > 0
@@ -121,7 +134,10 @@ function FinanceOverview() {
                   : 0}
               </p>
             </div>
-            <div className="stat-desc"></div>
+            <div className="stat-desc dark:text-white">
+              {" "}
+              Your initial balance
+            </div>
           </div>
 
           <div className="stat">
@@ -140,8 +156,8 @@ function FinanceOverview() {
                 ></path>
               </svg>
             </div>
-            <div className="stat-title">Total Income Count</div>
-            <div className="stat-value">
+            <div className="stat-title dark:text-white">Total Income Count</div>
+            <div className="stat-value dark:text-white">
               <p>{incomes.length}</p>
             </div>
             <div className="stat-desc"></div>
@@ -163,8 +179,8 @@ function FinanceOverview() {
                 ></path>
               </svg>
             </div>
-            <div className="stat-title">Max Income</div>
-            <div className="stat-value">
+            <div className="stat-title dark:text-white">Max Income</div>
+            <div className="stat-value dark:text-white">
               <p>
                 $
                 {incomes.length > 0
@@ -180,7 +196,7 @@ function FinanceOverview() {
       <div
         style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
       >
-        <div className="stats shadow stats-vertical lg:stats-horizontal">
+        <div className="stats shadow stats-vertical lg:stats-horizontal dark:bg-gray-800">
           <div className="stat">
             <div className="stat-figure text-primary">
               <svg
@@ -197,8 +213,8 @@ function FinanceOverview() {
                 ></path>
               </svg>
             </div>
-            <div className="stat-title">Min Expense</div>
-            <div className="stat-value">
+            <div className="stat-title dark:text-white">Min Expense</div>
+            <div className="stat-value dark:text-white">
               <p>
                 $
                 {expenses.length > 0
@@ -225,8 +241,10 @@ function FinanceOverview() {
                 ></path>
               </svg>
             </div>
-            <div className="stat-title">Total Expense Count</div>
-            <div className="stat-value">
+            <div className="stat-title dark:text-white">
+              Total Expense Count
+            </div>
+            <div className="stat-value dark:text-white">
               <p>{expenses.length}</p>
             </div>
             <div className="stat-desc"></div>
@@ -248,8 +266,8 @@ function FinanceOverview() {
                 ></path>
               </svg>
             </div>
-            <div className="stat-title">Max Expense</div>
-            <div className="stat-value">
+            <div className="stat-title dark:text-white">Max Expense</div>
+            <div className="stat-value dark:text-white">
               <p>
                 $
                 {expenses.length > 0
