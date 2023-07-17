@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useGlobalContext } from "../../context/globalContext";
 import FinanceChart from "../DashboardNav/Items/Chart";
-import styled from "styled-components";
+
 import { InnerLayout } from "../../styles/Layout";
 import RecentTransactions from "./Transaction/RecentTransactions";
 
