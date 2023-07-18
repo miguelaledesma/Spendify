@@ -3,7 +3,6 @@ import { dateFormat } from "../../../utils/dateFormat";
 import {
   bitcoin,
   book,
-  calender,
   card,
   circle,
   clothing,

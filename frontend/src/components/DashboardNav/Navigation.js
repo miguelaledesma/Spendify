@@ -45,7 +45,6 @@ function Navigation({ active, setActive }) {
       {user ? (
         <NavStyled>
           <div className="user-con">
-            {/* <img src={} alt="" /> */}
             <div className="text">
               <h2>{user?.name}'s tracker</h2>
               <p>{user?.email} </p>
