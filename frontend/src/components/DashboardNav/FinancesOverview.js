@@ -23,7 +23,6 @@ function FinanceOverview() {
     transactionHistory();
   }, []);
   return (
-    // <DashboardStyled>
     <InnerLayout>
       <div className="rounded-t mb-0 px-0 py-0 bg-transparent">
         <div className="flex flex-wrap items-center">
