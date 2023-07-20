@@ -5,7 +5,8 @@ import { useEffect } from "react";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
 import { home, signout } from "../../utils/icons";
-const BASE_URL = "http://localhost:5000/api/v1/";
+// const BASE_URL = "http://localhost:5000/api/v1/";
+import { BASE_URL } from "../../context/globalContext";
 
 const ResponsiveNavigation = ({ active, setActive }) => {
   const { user, setUser } = useGlobalContext();
