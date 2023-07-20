@@ -17,6 +17,7 @@ const {
   userLogin,
 } = require("../controllers/UserController");
 const { addToWaitList } = require("../controllers/waitlistController");
+const { chat } = require("../controllers/chatGPTController");
 
 const router = require("express").Router();
 
@@ -43,5 +44,7 @@ router.post("/login", userLogin);
 //waiting list endpoint:
 
 router.post("/wait-list", addToWaitList);
+
+router.post("/chat", chat);
 
 module.exports = { router };
