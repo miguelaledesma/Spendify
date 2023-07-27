@@ -84,27 +84,6 @@ const Homepage = ({ isDarkMode, setDarkMode }) => {
 
         <LandingContent />
         <WaitingList />
-        {/* <div className="grid grid-cols-2 gap-4 text-slate-600 dark:text-white">
-          <div>
-            <h3 className="text-2xl font-bold mb-2 dark:text-white">
-              Tracking
-            </h3>
-            <p className="text-lg">
-              Get real-time insights into your spending habits and take control
-              of your finances. Our app provides detailed reports and analysis
-              to help you make informed financial decisions.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-2xl font-bold mb-2">Effortless</h3>
-            <p className="text-lg">
-              Our app makes it easy to track your expenses and stay on top of
-              your finances. With a simple and intuitive interface, you can
-              easily add expenses, categorize them, and view detailed reports.
-            </p>
-          </div>
-        </div> */}
       </div>
       <DarkModeTheme isDarkMode={isDarkMode} setDarkMode={setDarkMode} />
 
