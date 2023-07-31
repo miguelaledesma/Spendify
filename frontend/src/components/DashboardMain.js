@@ -29,7 +29,6 @@ const DashboardMain = () => {
     <div className="DashMainApp h-screen relative">
       <ResponsiveNavigation active={active} setActive={setActive} user={user} />
       <div className="mainAppLayout p-4 h-full flex gap-3 dark:bg-gray-900">
-        {/* <Navigation active={active} setActive={setActive} user={user} /> */}
         <main className="flex-1 bg-rgba-252-246-249-78 border-3 border-white backdrop-blur-4.5 rounded-2xl overflow-x-hidden">
           {renderComponent()}
         </main>
