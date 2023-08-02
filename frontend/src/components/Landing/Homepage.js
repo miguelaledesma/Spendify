@@ -17,7 +17,6 @@ const Homepage = ({ isDarkMode, setDarkMode }) => {
   };
 
   const backgroundImageStyle = {
-    // backgroundImage: `url("https://images.unsplash.com/photo-1459257831348-f0cdd359235f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80")`,
     backgroundSize: "cover",
     backgroundColor: isDarkMode ? "#1F2937" : "#FFFFFF",
   };
