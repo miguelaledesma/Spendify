@@ -77,7 +77,7 @@ const LandingContent = () => {
               >
                 <span class="text-sm font-bold">✓</span>
               </span>{" "}
-              Analysis
+              Analyze and improve your financial well-being
             </li>
             <li class="box-border relative py-1 pl-0 text-left text-gray-500 border-solid">
               <span
@@ -86,7 +86,7 @@ const LandingContent = () => {
               >
                 <span class="text-sm font-bold">✓</span>
               </span>{" "}
-              Easy to use
+              Made simple to use
             </li>
           </ul>
         </div>
